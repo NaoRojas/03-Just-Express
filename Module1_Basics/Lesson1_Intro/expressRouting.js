@@ -11,20 +11,20 @@ const app = express()
 // ------------------------------------------------------
 // 🐨 Uncomment the above code and comment the below code to see the difference
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   res.send('<h1>Welcome to the GET page</h1>')
 })
+
 app.post('/', (req, res) => {
   res.send('<h1>Welcome to the POST page</h1>')
-
 })
+
 app.put('/', (req, res) => {
   res.send('<h1>Welcome to the PUT page</h1>')
-
 })
+
 app.delete('/', (req, res) => {
   res.send('<h1>Welcome to the DELETE page</h1>')
-
 })
 
 // 🐨 Use Postman to test the post, put and delete methods
