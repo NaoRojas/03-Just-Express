@@ -4,21 +4,20 @@ const fs = require('fs')
 
 
 const server = http.createServer((req, res) => {
-  console.log(req.url)
+  console.log("A request was made to: " + req.url)
   if (req.url === '/') {
     const homePage = fs.readFileSync('node.html')
     res.write(homePage)
     res.end()
-
-  } else if (req.url === '/node.png') {
+  } else if (req.url.endsWith('.png')) {
     res.writeHead(200, { 'Content-Type': 'image/png' })
     const image = fs.readFileSync('node.png')
     res.write(image)
     res.end()
-  } else if (req.url === '/styles.css') {
+  } else if (req.url.endsWith('.css')) {
     res.writeHead(200, { 'Content-Type': 'text/css' })
-    const image = fs.readFileSync('styles.css')
-    res.write(image)
+    const cssFile = fs.readFileSync('styles.css')
+    res.write(cssFile)
     res.end()
   }
   else {
@@ -26,7 +25,6 @@ const server = http.createServer((req, res) => {
     res.write('<style>body { margin-top:40%; background-color: black; color: white; text-align: center; }</style>')
     res.write('<h1>404 Page Not Found</h1>')
     res.end()
-
   }
 })
 
