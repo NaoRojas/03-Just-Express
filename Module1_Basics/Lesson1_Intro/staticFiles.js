@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const app = express()
 
@@ -10,8 +11,8 @@ const app = express()
 // Anybody can access it
 app.use(express.static('public'))
 
-app.all('*', (_, res) => {
-  res.send('<h1>Welcome to the ALL page</h1>')
+app.all('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node.html'))
 })
 
 app.listen(3000)
