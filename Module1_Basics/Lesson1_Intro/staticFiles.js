@@ -15,4 +15,8 @@ app.all('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'node.html'))
 })
 
+app.all('*', (req, res) => {
+  res.send('<h1>404 Page Not Found</h1>')
+})
+
 app.listen(3000)
