@@ -1,8 +1,20 @@
-const http = require('http');
+const http = require('http')
 // We dont need to install http module as it is a core module
+const fs = require('fs')
+
 
 const server = http.createServer((req, res) => {
-  console.log(req);
+  console.log(req.url)
+  if (req.url === '/') {
+    const homePage = fs.readFileSync('node.html')
+    res.write(homePage)
+    res.end()
+
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/html' })
+    res.write('<style>body { margin-top:40%; background-color: black; color: white; text-align: center; }</style>')
+    res.write('<h1>404 Page Not Found</h1>')
+  }
 })
 
 // CreateServer method creates an object a listen method
