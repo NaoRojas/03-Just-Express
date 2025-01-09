@@ -36,5 +36,4 @@ app.get('/admin', (req, res, next) => {
   console.log(res.locals.validated)
 })
 
-
 app.listen(3000)
