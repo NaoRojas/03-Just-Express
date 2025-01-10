@@ -3,13 +3,13 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const helmet = require('helmet')
-app.use(helmet({
-  contentSecurityPolicy: false,
-}))
+
 app.get(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded())
-
+app.use(helmet({
+  contentSecurityPolicy: false,
+}))
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -24,7 +24,11 @@ app.get('/', (req, res) => {
   // 4. Express uses the node module for our view engine and parses the file
   // 5. The final result of this proccess is a compiled product of the things the browser can read (HTML, CSS, JS)
 
-  res.render('index')
+  res.render('index',
+    {
+      msg: 'Success!'
+    }
+  )
 })
 
 app.listen(3000)
