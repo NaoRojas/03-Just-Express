@@ -1,3 +1,22 @@
+<!-- 🐨 We get the same result with the following code: -->
 <h1>
   <%= msg %>
 </h1>
+<!-- 🐨 We can use locals to pass data to the view -->
+<h1>
+  <%= locals.msg %>
+</h1>
+<h2>
+  <%= msg2 %>
+</h2>
+<!-- 🐨 You dont have to use locals to pass data -->
+<h3>
+  <%= locals.validated %>
+</h3>
+<h3>
+  <%= validated %>
+</h3>
+<!-- 🐨 Trusted HTML: -->
+<div>
+  <%- html %>
+</div>
