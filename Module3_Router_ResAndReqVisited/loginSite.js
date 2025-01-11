@@ -21,7 +21,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
+  const { msg } = req.query
+  if (msg === 'fail') {
+    res.render('login', { error: 'Invalid username or password' })
+    return
+  }
   res.render('login')
+})
+
+app.get('/logout', (req, res) => {
+  res.clearCookie('username')
+  res.redirect('/login')
 })
 
 app.post('/login', (req, res) => {
